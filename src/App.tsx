@@ -1,10 +1,12 @@
 import "./App.css";
 import { useState } from "react";
+import { v4 as uuiv4 } from "uuid";
 import { Button } from "./ui/Button";
 import { Text } from "./ui/Text";
 
 function App() {
   // let count = 0;
+  const [uuid, setUuid] = useState(uuiv4());
   const [count, setCount] = useState(0); // 0 - initial value
   // const state = useState(0); // 0 - initial value
   // state[0] - value
@@ -15,6 +17,7 @@ function App() {
     // count = count + 1;
     setCount((currentValue) => currentValue + 1);
     console.log({ count });
+    setUuid(uuiv4());
   };
 
   const handleClickTwo = () => {
@@ -26,6 +29,7 @@ function App() {
 
   return (
     <div>
+      <Text>{uuid}</Text>
       <Text>Count: {count}</Text>
       <Button
         label="Click"
