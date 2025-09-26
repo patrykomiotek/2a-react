@@ -24,5 +24,13 @@ export function Button({ label, bgColor, color }: Props) {
     backgroundColor: palette[bgColor],
   };
 
-  return <button style={styles}>{label}</button>;
+  const handleClick = () => {
+    alert("Hello world!");
+  };
+
+  return (
+    <button style={styles} onClick={handleClick}>
+      {label}
+    </button>
+  );
 }
