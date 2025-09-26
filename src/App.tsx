@@ -3,17 +3,23 @@ import { Button } from "./ui/Button";
 import { Text } from "./ui/Text";
 
 function App() {
+  let count = 0;
+
   const handleClickOne = () => {
-    alert("Hello world!");
+    // alert("Hello world!");
+    count = count + 1;
+    console.log({ count });
   };
 
   const handleClickTwo = () => {
-    alert("Hello Techni!");
+    // alert("Hello Techni!");
+    count = count + 1;
+    console.log({ count });
   };
 
   return (
     <div>
-      <Text>Hello World!</Text>
+      <Text>Count: {count}</Text>
       <Button
         label="Click"
         onClick={handleClickOne}
