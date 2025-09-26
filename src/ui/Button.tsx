@@ -16,20 +16,17 @@ type Props = {
   label: string;
   bgColor: Colors;
   color: Colors;
+  onClick: () => void;
 };
 
-export function Button({ label, bgColor, color }: Props) {
+export function Button({ label, bgColor, color, onClick }: Props) {
   const styles = {
     color: palette[color], // emerald | carrot
     backgroundColor: palette[bgColor],
   };
 
-  const handleClick = () => {
-    alert("Hello world!");
-  };
-
   return (
-    <button style={styles} onClick={handleClick}>
+    <button style={styles} onClick={onClick}>
       {label}
     </button>
   );
