@@ -5,8 +5,8 @@ function App() {
   return (
     <div>
       <p>Hello World!</p>
-      <Button label="Click" />
-      <Button label="Click me again" />
+      <Button label="Click" bgColor="clouds" color="peter-river" />
+      <Button label="Click me again" bgColor="carrot" color="emerald" />
     </div>
   );
 }
