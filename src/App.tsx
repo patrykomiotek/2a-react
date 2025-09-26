@@ -5,27 +5,28 @@ import { Text } from "./ui/Text";
 
 function App() {
   // let count = 0;
-  const state = useState(0); // 0 - initial value
+  const [count, setCount] = useState(0); // 0 - initial value
+  // const state = useState(0); // 0 - initial value
   // state[0] - value
   // state[1] - callback
 
   const handleClickOne = () => {
     // alert("Hello world!");
     // count = count + 1;
-    state[1]((currentValue) => currentValue + 1);
-    console.log({ count: state[0] });
+    setCount((currentValue) => currentValue + 1);
+    console.log({ count });
   };
 
   const handleClickTwo = () => {
     // alert("Hello Techni!");
     // count = count + 1;
-    state[1]((currentValue) => currentValue + 1);
-    console.log({ count: state[0] });
+    setCount((currentValue) => currentValue + 1);
+    console.log({ count });
   };
 
   return (
     <div>
-      <Text>Count: {state[0]}</Text>
+      <Text>Count: {count}</Text>
       <Button
         label="Click"
         onClick={handleClickOne}
