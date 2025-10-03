@@ -1,5 +1,6 @@
 import { useRef, type ChangeEventHandler, type FormEventHandler } from "react";
 import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
 
 export const RegistrationFormRefs = () => {
   const emailFieldRef = useRef<HTMLInputElement>(null);
@@ -30,25 +31,10 @@ export const RegistrationFormRefs = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">E-mail</label>
-        <input ref={emailFieldRef} id="email" type="email" />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input ref={passwordFieldRef} id="password" type="password" />
-      </div>
-      <div>
-        <label htmlFor="language">Language</label>
-        <input
-          ref={languageFieldRef}
-          onChange={handleLanguageValidation}
-          id="language"
-        />
-      </div>
-      <div>
-        <Button type="submit" label="Send" />
-      </div>
+      <Input ref={emailFieldRef} label="E-mail" type="email" />
+      <Input ref={passwordFieldRef} label="Password" type="password" />
+      <Input ref={languageFieldRef} label="Language" />
+      <Button type="submit" label="Send" />
     </form>
   );
 };
