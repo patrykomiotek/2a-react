@@ -1,45 +1,38 @@
-import { useState, type FormEventHandler } from "react";
+import { useRef, type FormEventHandler } from "react";
 import { Button } from "../ui/Button";
 
 export const RegistrationFormRefs = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [language, setLanguage] = useState("");
+  const emailFieldRef = useRef<HTMLInputElement>(null);
+  const passwordFieldRef = useRef<HTMLInputElement>(null);
+  const languageFieldRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
+    const emailValue = emailFieldRef.current?.value || "";
+    const passwordValue = passwordFieldRef.current?.value || "";
+    const languageValue = languageFieldRef.current?.value || "";
     // FormData
     // state
-    console.log({ email, password, language });
+    console.log({
+      email: emailValue,
+      password: passwordValue,
+      language: languageValue,
+    });
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <p>
-        E-mail: {email}, Password: {password}, Language: {language}
-      </p>
       <div>
         <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
-          type="email"
-          onChange={(event) => setEmail(event.target.value)}
-        />
+        <input ref={emailFieldRef} id="email" type="email" />
       </div>
       <div>
         <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          onChange={(event) => setPassword(event.target.value)}
-        />
+        <input ref={passwordFieldRef} id="password" type="password" />
       </div>
       <div>
         <label htmlFor="language">Language</label>
-        <input
-          id="language"
-          onChange={(event) => setLanguage(event.target.value)}
-        />
+        <input ref={languageFieldRef} id="language" />
       </div>
       <div>
         <Button type="submit" label="Send" />
