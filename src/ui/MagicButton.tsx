@@ -1,0 +1,60 @@
+import { type ComponentProps, useRef } from "react";
+
+const palette = {
+  emerald: "#2ecc71",
+  "peter-river": "#3498db",
+  amethyst: "#9b59b6",
+  "sun-flower": "#f1c40f",
+  carrot: "#e67e22",
+  clouds: "#ecf0f1",
+  "midnight-blue": "#2c3e50",
+};
+
+// typeof - stworzenie typu na podstawie zmiennej
+// keyof - wyciągnięcie kluczy z typu
+type Colors = keyof typeof palette;
+
+type Props = {
+  label: string;
+  bgColor: Colors;
+  color: Colors;
+} & ComponentProps<"button">;
+
+export function MagicButton({ label, bgColor, color, ...rest }: Props) {
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  const styles = {
+    color: palette[color], // emerald | carrot
+    backgroundColor: palette[bgColor],
+  };
+
+  // onMouseEnter, onMouseLeave
+  // onMouseOver, onMouseDown
+
+  const handleMouseEnter = () => {
+    const myButton = buttonRef.current;
+    if (myButton) {
+      myButton.style.backgroundColor = palette["emerald"];
+      myButton.style.color = palette["clouds"];
+    }
+  };
+  const handleMouseLeave = () => {
+    const myButton = buttonRef.current;
+    if (myButton) {
+      myButton.style.backgroundColor = palette["midnight-blue"];
+      myButton.style.color = palette["clouds"];
+    }
+  };
+
+  return (
+    <button
+      ref={buttonRef}
+      style={styles}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      {...rest}
+    >
+      {label}
+    </button>
+  );
+}

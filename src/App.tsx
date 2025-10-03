@@ -3,6 +3,7 @@ import { useState } from "react";
 import { v4 as uuiv4 } from "uuid";
 import { Button } from "./ui/Button";
 import { Text } from "./ui/Text";
+import { MagicButton } from "./ui/MagicButton";
 
 function App() {
   // let count = 0;
@@ -39,6 +40,18 @@ function App() {
       />
       <Button
         label="Click me again"
+        onClick={handleClickTwo}
+        bgColor="carrot"
+        color="emerald"
+      />
+      <MagicButton
+        label="Magic Button"
+        onClick={handleClickTwo}
+        bgColor="carrot"
+        color="emerald"
+      />
+      <MagicButton
+        label="Magic Button"
         onClick={handleClickTwo}
         bgColor="carrot"
         color="emerald"
