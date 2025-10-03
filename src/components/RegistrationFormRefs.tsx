@@ -1,4 +1,4 @@
-import { useRef, type FormEventHandler } from "react";
+import { useRef, type ChangeEventHandler, type FormEventHandler } from "react";
 import { Button } from "../ui/Button";
 
 export const RegistrationFormRefs = () => {
@@ -20,6 +20,14 @@ export const RegistrationFormRefs = () => {
     });
   };
 
+  const handleLanguageValidation: ChangeEventHandler<HTMLInputElement> = () => {
+    const languageField = languageFieldRef.current;
+    const languageValue = languageField?.value;
+    if (languageValue && languageValue === "php") {
+      languageField.value = "***";
+    }
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -32,7 +40,11 @@ export const RegistrationFormRefs = () => {
       </div>
       <div>
         <label htmlFor="language">Language</label>
-        <input ref={languageFieldRef} id="language" />
+        <input
+          ref={languageFieldRef}
+          onChange={handleLanguageValidation}
+          id="language"
+        />
       </div>
       <div>
         <Button type="submit" label="Send" />
