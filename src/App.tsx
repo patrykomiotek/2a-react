@@ -5,6 +5,7 @@ import { Button } from "./ui/Button";
 import { Text } from "./ui/Text";
 import { MagicButton } from "./ui/MagicButton";
 import { RegistrationForm } from "./components/RegistrationForm";
+import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
 
 function App() {
   // let count = 0;
@@ -31,7 +32,7 @@ function App() {
 
   return (
     <div>
-      <RegistrationForm />
+      <RegistrationFormRefs />
       {/* <Text>{uuid}</Text>
       <Text>Count: {count}</Text>
       <div>
