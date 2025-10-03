@@ -16,11 +16,16 @@ type Colors = keyof typeof palette;
 
 type Props = {
   label: string;
-  bgColor: Colors;
-  color: Colors;
+  bgColor?: Colors;
+  color?: Colors;
 } & ComponentProps<"button">;
 
-export function Button({ label, bgColor, color, ...rest }: Props) {
+export function Button({
+  label,
+  bgColor = "midnight-blue",
+  color = "clouds",
+  ...rest
+}: Props) {
   const styles = {
     color: palette[color], // emerald | carrot
     backgroundColor: palette[bgColor],

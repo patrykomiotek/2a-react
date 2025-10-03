@@ -1,4 +1,4 @@
-import { type ComponentProps, useRef } from "react";
+import { type ComponentProps, useRef, useEffect } from "react";
 
 const palette = {
   emerald: "#2ecc71",
@@ -16,17 +16,30 @@ type Colors = keyof typeof palette;
 
 type Props = {
   label: string;
-  bgColor: Colors;
-  color: Colors;
+  bgColor?: Colors;
+  color?: Colors;
 } & ComponentProps<"button">;
 
-export function MagicButton({ label, bgColor, color, ...rest }: Props) {
+export function MagicButton({
+  label,
+  bgColor = "midnight-blue",
+  color = "clouds",
+  ...rest
+}: Props) {
   const buttonRef = useRef<HTMLButtonElement>(null);
 
   const styles = {
     color: palette[color], // emerald | carrot
     backgroundColor: palette[bgColor],
   };
+
+  useEffect(() => {
+    const myButton = buttonRef.current;
+    if (myButton) {
+      myButton.style.backgroundColor = palette["carrot"];
+      myButton.style.color = palette["clouds"];
+    }
+  }, []);
 
   // onMouseEnter, onMouseLeave
   // onMouseOver, onMouseDown

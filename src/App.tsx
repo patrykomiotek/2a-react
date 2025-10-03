@@ -32,30 +32,14 @@ function App() {
     <div>
       <Text>{uuid}</Text>
       <Text>Count: {count}</Text>
-      <Button
-        label="Click"
-        onClick={handleClickOne}
-        bgColor="clouds"
-        color="peter-river"
-      />
-      <Button
-        label="Click me again"
-        onClick={handleClickTwo}
-        bgColor="carrot"
-        color="emerald"
-      />
-      <MagicButton
-        label="Magic Button"
-        onClick={handleClickTwo}
-        bgColor="carrot"
-        color="emerald"
-      />
-      <MagicButton
-        label="Magic Button"
-        onClick={handleClickTwo}
-        bgColor="carrot"
-        color="emerald"
-      />
+      <div>
+        <Button label="Click" onClick={handleClickOne} />
+        <Button label="Click me again" onClick={handleClickTwo} />
+      </div>
+      <div>
+        <MagicButton label="Magic Button" onClick={handleClickTwo} />
+        <MagicButton label="Magic Button" onClick={handleClickTwo} />
+      </div>
     </div>
   );
 }
