@@ -1,12 +1,20 @@
-import { useState } from "react";
+import { useState, type FormEventHandler } from "react";
+import { Button } from "../ui/Button";
 
 export const RegistrationForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [language, setLanguage] = useState("");
 
+  const handleSubmit: FormEventHandler = (event) => {
+    event.preventDefault();
+    // FormData
+    // state
+    console.log({ email, password, language });
+  };
+
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <p>
         E-mail: {email}, Password: {password}, Language: {language}
       </p>
@@ -33,6 +41,9 @@ export const RegistrationForm = () => {
           onChange={(event) => setLanguage(event.target.value)}
         />
       </div>
-    </div>
+      <div>
+        <Button type="submit" label="Send" />
+      </div>
+    </form>
   );
 };
