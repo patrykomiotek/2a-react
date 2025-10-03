@@ -1,3 +1,5 @@
+import { type ComponentProps } from "react";
+
 const palette = {
   emerald: "#2ecc71",
   "peter-river": "#3498db",
@@ -16,17 +18,16 @@ type Props = {
   label: string;
   bgColor: Colors;
   color: Colors;
-  onClick: () => void;
-};
+} & ComponentProps<"button">;
 
-export function Button({ label, bgColor, color, onClick }: Props) {
+export function Button({ label, bgColor, color, ...rest }: Props) {
   const styles = {
     color: palette[color], // emerald | carrot
     backgroundColor: palette[bgColor],
   };
 
   return (
-    <button style={styles} onClick={onClick}>
+    <button style={styles} {...rest}>
       {label}
     </button>
   );
