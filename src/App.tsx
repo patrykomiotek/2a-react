@@ -32,6 +32,7 @@ function App() {
 
   return (
     <div>
+      <RegistrationForm />
       <RegistrationFormRefs />
       {/* <Text>{uuid}</Text>
       <Text>Count: {count}</Text>
