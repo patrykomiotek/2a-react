@@ -1,16 +1,33 @@
-import { useRef, type ChangeEventHandler, type FormEventHandler } from "react";
+import {
+  useRef,
+  useState,
+  type ChangeEventHandler,
+  type FormEventHandler,
+} from "react";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 
 export const RegistrationFormRefs = () => {
+  const [passwordError, setPasswordError] = useState(false);
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
+  const passwordErrorFieldRef = useRef<HTMLInputElement>(null);
   const languageFieldRef = useRef<HTMLInputElement>(null);
 
   const handleSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     const emailValue = emailFieldRef.current?.value || "";
     const passwordValue = passwordFieldRef.current?.value || "";
+
+    if (passwordValue.length <= 3) {
+      // setPasswordError(true);
+      const passwordError = passwordErrorFieldRef.current;
+      if (passwordError) {
+        passwordError.innerText = "Too short";
+        passwordError.style.color = "red";
+      }
+    }
+
     const languageValue = languageFieldRef.current?.value || "";
     // FormData
     // state
@@ -32,7 +49,10 @@ export const RegistrationFormRefs = () => {
   return (
     <form onSubmit={handleSubmit}>
       <Input ref={emailFieldRef} label="E-mail" type="email" />
+
       <Input ref={passwordFieldRef} label="Password" type="password" />
+      <p ref={passwordErrorFieldRef}></p>
+
       <Input ref={languageFieldRef} label="Language" />
       <Button type="submit" label="Send" />
     </form>
