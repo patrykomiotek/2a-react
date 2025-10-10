@@ -10,20 +10,35 @@ interface CharacterDto {
 
 export const Characters = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [data, setData] = useState<CharacterDto[]>([]);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          setIsError(true);
+        }
+      })
       .then((data) => {
-        setIsLoading(false);
+        // setIsLoading(false);
         setData(data.results);
+      })
+      .catch(() => {
+        // setIsLoading(false);
+        setIsError(true);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, []);
 
   return (
     <div>
       {isLoading && <p>Loading...</p>}
+      {isError && <p>Oh no! An error has occurred! Please try again...</p>}
       <div className="space-y-4">
         {data.map((elem) => (
           <div key={elem.id} className="flex gap-2">
