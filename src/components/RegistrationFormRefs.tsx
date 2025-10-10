@@ -3,13 +3,13 @@ import {
   useState,
   type ChangeEventHandler,
   type FormEventHandler,
-  createRef, //
+  // createRef,
 } from "react";
 import { Button } from "../ui/Button";
 import { Input } from "../ui/Input";
 
 export const RegistrationFormRefs = () => {
-  const [passwordError, setPasswordError] = useState(false);
+  // const [passwordError, setPasswordError] = useState(false);
   const emailFieldRef = useRef<HTMLInputElement>(null);
   const passwordFieldRef = useRef<HTMLInputElement>(null);
   const passwordErrorFieldRef = useRef<HTMLInputElement>(null);

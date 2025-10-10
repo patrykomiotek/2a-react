@@ -1,11 +1,12 @@
 import "./App.css";
 import { useState } from "react";
 import { v4 as uuiv4 } from "uuid";
-import { Button } from "./ui/Button";
-import { Text } from "./ui/Text";
-import { MagicButton } from "./ui/MagicButton";
+// import { Button } from "./ui/Button";
+// import { Text } from "./ui/Text";
+// import { MagicButton } from "./ui/MagicButton";
 import { RegistrationForm } from "./components/RegistrationForm";
 import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
+import { Viewport } from "./components/Viewport";
 
 function App() {
   // let count = 0;
@@ -31,7 +32,8 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
+      <Viewport />
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <RegistrationForm />
       <RegistrationFormRefs />
