@@ -7,6 +7,7 @@ import { v4 as uuiv4 } from "uuid";
 import { RegistrationForm } from "./components/RegistrationForm";
 import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
 import { Viewport } from "./components/Viewport";
+import { Counter } from "./components/Counter";
 
 function App() {
   // let count = 0;
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div className="container">
+      <Counter />
       <Viewport />
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
       <RegistrationForm />
