@@ -1,6 +1,24 @@
-export function useViewport() {
-  const x = window.innerWidth;
-  const y = window.innerHeight;
+import { useEffect, useState } from "react";
 
-  return { x, y };
+const getSize = () => ({
+  x: window.innerWidth,
+  y: window.innerHeight,
+});
+
+export function useViewport() {
+  const [size, setSize] = useState(getSize());
+
+  const handleResize = () => {
+    setSize(getSize());
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  return size;
 }
