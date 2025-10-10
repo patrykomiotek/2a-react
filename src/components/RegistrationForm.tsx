@@ -1,5 +1,6 @@
 import { useState, type FormEventHandler } from "react";
 import { Button } from "../ui/Button";
+import { Input } from "../ui/Input";
 
 export const RegistrationForm = () => {
   const [email, setEmail] = useState("");
@@ -18,26 +19,21 @@ export const RegistrationForm = () => {
       <p>
         E-mail: {email}, Password: {password}, Language: {language}
       </p>
-      <div>
-        <label htmlFor="email">E-mail</label>
-        <input
-          id="email"
+      <div className="space-y-2">
+        <Input
+          label="E-mail"
           type="email"
           onChange={(event) => setEmail(event.target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
+
+        <Input
+          label="Password"
           type="password"
           onChange={(event) => setPassword(event.target.value)}
         />
-      </div>
-      <div>
-        <label htmlFor="language">Language</label>
-        <input
-          id="language"
+
+        <Input
+          label="Language"
           onChange={(event) => setLanguage(event.target.value)}
         />
       </div>
