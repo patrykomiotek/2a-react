@@ -25,7 +25,7 @@ export const RegistrationFormRefs = () => {
       const passwordError = passwordErrorFieldRef.current;
       if (passwordError) {
         passwordError.innerText = "Too short";
-        passwordError.style.color = "red";
+        // passwordError.style.color = "red";
       }
     }
 
@@ -49,12 +49,14 @@ export const RegistrationFormRefs = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Input ref={emailFieldRef} label="E-mail" type="email" />
+      <div className="space-y-2">
+        <Input ref={emailFieldRef} label="E-mail" type="email" />
 
-      <Input ref={passwordFieldRef} label="Password" type="password" />
-      <p ref={passwordErrorFieldRef}></p>
+        <Input ref={passwordFieldRef} label="Password" type="password" />
+        <p className="text-red-500" ref={passwordErrorFieldRef}></p>
 
-      <Input ref={languageFieldRef} label="Language" />
+        <Input ref={languageFieldRef} label="Language" />
+      </div>
       <Button type="submit" label="Send" />
     </form>
   );

@@ -28,7 +28,7 @@ export const Button = memo(
     };
 
     return (
-      <button style={styles} {...rest}>
+      <button className="py-2 px-3 rounded-md" style={styles} {...rest}>
         {label}
       </button>
     );

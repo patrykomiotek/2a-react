@@ -10,9 +10,9 @@ export const Input = ({ id, label, ref, ...rest }: Props) => {
   const fieldId = id ? id : reactId;
 
   return (
-    <div>
+    <div className="flex gap-2">
       <label htmlFor={fieldId}>{label}</label>
-      <input ref={ref} id={fieldId} {...rest} />
+      <input ref={ref} id={fieldId} className="outline" {...rest} />
     </div>
   );
 };
