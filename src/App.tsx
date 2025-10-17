@@ -9,6 +9,7 @@ import { RegistrationFormRefs } from "./components/RegistrationFormRefs";
 import { Viewport } from "./components/Viewport";
 import { Counter } from "./components/Counter";
 import { Characters } from "./components/Characters";
+import { Character } from "./components/Character";
 
 function App() {
   // let count = 0;
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <div className="container">
+      <Character />
       <Characters />
       {/* <Counter /> */}
       {/* <Viewport /> */}
