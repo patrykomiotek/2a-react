@@ -5,6 +5,9 @@ const getSize = () => ({
   y: window.innerHeight,
 });
 
+// Custom hooks
+// 1. "use"
+// 2. utilize other React hooks: useEffect, useState, useRef etc...
 export function useViewport() {
   const [size, setSize] = useState(getSize());
 

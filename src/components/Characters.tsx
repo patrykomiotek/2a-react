@@ -8,10 +8,22 @@ interface CharacterDto {
   species: string;
 }
 
+type ApiResponse = {
+  isLoading: boolean;
+  isError: boolean;
+  data: CharacterDto[];
+};
+
 export const Characters = () => {
-  const [isLoading, setIsLoading] = useState(true);
-  const [isError, setIsError] = useState(false);
-  const [data, setData] = useState<CharacterDto[]>([]);
+  const [state, setState] = useState<ApiResponse>({
+    isLoading: true,
+    isError: false,
+    data: [],
+  });
+
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [isError, setIsError] = useState(false);
+  // const [data, setData] = useState<CharacterDto[]>([]);
 
   useEffect(() => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -19,21 +31,45 @@ export const Characters = () => {
         if (response.ok) {
           return response.json();
         } else {
-          setIsError(true);
+          // setIsError(true);
+          setState({
+            ...state,
+            isError: true,
+          });
         }
       })
       .then((data) => {
         // setIsLoading(false);
-        setData(data.results);
+        // setData(data.results);
+        console.log("results: ", data.results);
+        console.log("current state: ", state, "new state: ", {
+          ...state,
+          data: data.results,
+        });
+        setState({
+          ...state,
+          data: data.results,
+          isLoading: false,
+        });
       })
       .catch(() => {
         // setIsLoading(false);
-        setIsError(true);
+        // setIsError(true);
+        setState({
+          ...state,
+          isError: true,
+        });
       })
       .finally(() => {
-        setIsLoading(false);
+        // setIsLoading(false);
+        // setState({
+        //   ...state,
+        //   isLoading: false,
+        // });
       });
   }, []);
+
+  const { isLoading, isError, data } = state;
 
   return (
     <div>
