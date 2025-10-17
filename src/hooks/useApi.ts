@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 
 type ApiResponse<D> = {
   isLoading: boolean;
@@ -8,6 +8,7 @@ type ApiResponse<D> = {
 
 // const { isLoading, isError, data } = useApi<CharacterDto>('http://example.com');
 export const useApi = <T>(url: string) => {
+  // fetcher: string | Function
   const [state, setState] = useState<ApiResponse<T>>({
     isLoading: true,
     isError: false,
@@ -15,7 +16,7 @@ export const useApi = <T>(url: string) => {
   });
 
   useEffect(() => {
-    fetch(url)
+    fetch(url) // fetcher()
       .then((response) => {
         if (response.ok) {
           return response.json();
