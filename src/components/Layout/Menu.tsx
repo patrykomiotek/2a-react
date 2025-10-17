@@ -1,29 +1,40 @@
 import { Link } from "react-router-dom";
 
+type MenuItem = {
+  path: string;
+  label: string;
+};
+
+const links: MenuItem[] = [
+  {
+    path: "/",
+    label: "Home",
+  },
+  {
+    path: "/characters",
+    label: "Characters",
+  },
+  {
+    path: "/about",
+    label: "About",
+  },
+  {
+    path: "/contact",
+    label: "Contact",
+  },
+];
+
 export const Menu = () => {
   return (
     <nav className="mb-6">
       <ul className="flex gap-2">
-        <li>
-          <Link to="/" className="text-blue-600">
-            Home
-          </Link>
-        </li>
-        <li>
-          <Link to="/characters" className="text-blue-600">
-            Characters
-          </Link>
-        </li>
-        <li>
-          <Link to="/about" className="text-blue-600">
-            About
-          </Link>
-        </li>
-        <li>
-          <Link to="/contact" className="text-blue-600">
-            Contact
-          </Link>
-        </li>
+        {links.map((elem) => (
+          <li key={elem.path}>
+            <Link to={elem.path} className="text-blue-600">
+              {elem.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );
