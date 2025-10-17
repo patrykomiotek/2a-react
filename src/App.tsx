@@ -10,6 +10,8 @@ import { Viewport } from "./components/Viewport";
 import { Counter } from "./components/Counter";
 import { Characters } from "./components/Characters";
 import { Character } from "./components/Character";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes";
 
 function App() {
   // let count = 0;
@@ -36,8 +38,9 @@ function App() {
 
   return (
     <div className="container">
-      <Character />
-      <Characters />
+      <RouterProvider router={router} />
+      {/* <Character /> */}
+      {/* <Characters /> */}
       {/* <Counter /> */}
       {/* <Viewport /> */}
       {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
