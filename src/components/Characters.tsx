@@ -1,86 +1,31 @@
-import { useEffect, useState } from "react";
+import type { CharacterDto } from "../contracts/character.dto";
+import { useApi } from "../hooks/useApi";
 
-interface CharacterDto {
-  id: number;
-  image: string;
-  name: string;
-  status: "Alive" | "Dead";
-  species: string;
-}
-
-type ApiResponse = {
-  isLoading: boolean;
-  isError: boolean;
-  data: {
-    results: CharacterDto[];
-  };
+type ApiResults = {
+  results: CharacterDto[];
 };
 
 export const Characters = () => {
-  const [state, setState] = useState<ApiResponse>({
-    isLoading: true,
-    isError: false,
-    data: {
-      results: [],
-    },
-  });
+  const { isLoading, isError, data } = useApi<ApiResults>(
+    "https://rickandmortyapi.com/api/character"
+  );
 
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [isError, setIsError] = useState(false);
-  // const [data, setData] = useState<CharacterDto[]>([]);
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
 
-  useEffect(() => {
-    fetch("https://rickandmortyapi.com/api/character")
-      .then((response) => {
-        if (response.ok) {
-          return response.json();
-        } else {
-          // setIsError(true);
-          setState({
-            ...state,
-            isError: true,
-          });
-        }
-      })
-      .then((data) => {
-        // setIsLoading(false);
-        // setData(data.results);
-        console.log("results: ", data.results);
-        console.log("current state: ", state, "new state: ", {
-          ...state,
-          data: data.results,
-        });
-        setState({
-          ...state,
-          data: data,
-          isLoading: false,
-        });
-      })
-      .catch(() => {
-        // setIsLoading(false);
-        // setIsError(true);
-        setState({
-          ...state,
-          isError: true,
-        });
-      })
-      .finally(() => {
-        // setIsLoading(false);
-        // setState({
-        //   ...state,
-        //   isLoading: false,
-        // });
-      });
-  }, []);
+  if (isError) {
+    return <p>Oh no! An error has occurred! Please try again...</p>;
+  }
 
-  // const {isLoading, isError, data} = useApi('https://rickandmortyapi.com/api/character')
-  const { isLoading, isError, data } = state;
+  if (!data) {
+    return <p>Data invalid</p>;
+  }
+
   const characters = data.results;
 
   return (
     <div>
-      {isLoading && <p>Loading...</p>}
-      {isError && <p>Oh no! An error has occurred! Please try again...</p>}
       <div className="space-y-4">
         {characters.map((elem) => (
           <div key={elem.id} className="flex gap-2">
