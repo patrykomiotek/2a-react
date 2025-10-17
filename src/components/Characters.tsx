@@ -1,29 +1,10 @@
 import type { CharacterDto } from "../contracts/character.dto";
-import { useApi } from "../hooks/useApi";
 
-type ApiResults = {
-  results: CharacterDto[];
+type Props = {
+  characters: CharacterDto[];
 };
 
-export const Characters = () => {
-  const { isLoading, isError, data } = useApi<ApiResults>(
-    "https://rickandmortyapi.com/api/character"
-  );
-
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Oh no! An error has occurred! Please try again...</p>;
-  }
-
-  if (!data) {
-    return <p>Data invalid</p>;
-  }
-
-  const characters = data.results;
-
+export const Characters = ({ characters }: Props) => {
   return (
     <div>
       <div className="space-y-4">
