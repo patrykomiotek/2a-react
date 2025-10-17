@@ -1,6 +1,5 @@
 // import { useEffect, useState } from "react";
 import type { CharacterDto } from '../contracts/character.dto';
-import { useApi } from '../hooks/useApi';
 
 // interface CharacterDto {
 //   id: number;
@@ -16,11 +15,11 @@ import { useApi } from '../hooks/useApi';
 //   data: T;
 // };
 
-export const CharacterDetails = () => {
-  const { isLoading, isError, data } = useApi<CharacterDto>(
-    'https://rickandmortyapi.com/api/character/2',
-  );
+type Props = {
+  character: CharacterDto;
+};
 
+export const CharacterDetails = ({ character }: Props) => {
   // const [state, setState] = useState<ApiResponse<CharacterDto | undefined>>({
   //   isLoading: true,
   //   isError: false,
@@ -77,27 +76,15 @@ export const CharacterDetails = () => {
 
   // const { isLoading, isError, data } = state;
 
-  if (isLoading) {
-    return <p>Loading...</p>;
-  }
-
-  if (isError) {
-    return <p>Oh no! An error has occurred! Please try again...</p>;
-  }
-
-  if (!data) {
-    return <p>Data invalid</p>;
-  }
-
   return (
     <div>
       <div className="space-y-4">
-        <div key={data.id} className="flex gap-2">
-          <img src={data.image} className="rounded-full h-24" />
+        <div key={character.id} className="flex gap-2">
+          <img src={character.image} className="rounded-full h-24" />
           <div>
-            <h2 className="text-2xl">{data.name}</h2>
-            <p className="text-slate-500">{data.status}</p>
-            <p className="text-slate-500">{data.species}</p>
+            <h2 className="text-2xl">{character.name}</h2>
+            <p className="text-slate-500">{character.status}</p>
+            <p className="text-slate-500">{character.species}</p>
           </div>
         </div>
       </div>
