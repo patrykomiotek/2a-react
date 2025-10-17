@@ -73,6 +73,7 @@ export const Characters = () => {
       });
   }, []);
 
+  // const {isLoading, isError, data} = useApi('https://rickandmortyapi.com/api/character')
   const { isLoading, isError, data } = state;
   const characters = data.results;
 
