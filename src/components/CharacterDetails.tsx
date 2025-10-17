@@ -1,6 +1,6 @@
 // import { useEffect, useState } from "react";
-import type { CharacterDto } from "../contracts/character.dto";
-import { useApi } from "../hooks/useApi";
+import type { CharacterDto } from '../contracts/character.dto';
+import { useApi } from '../hooks/useApi';
 
 // interface CharacterDto {
 //   id: number;
@@ -16,9 +16,9 @@ import { useApi } from "../hooks/useApi";
 //   data: T;
 // };
 
-export const Character = () => {
+export const CharacterDetails = () => {
   const { isLoading, isError, data } = useApi<CharacterDto>(
-    "https://rickandmortyapi.com/api/character/2"
+    'https://rickandmortyapi.com/api/character/2',
   );
 
   // const [state, setState] = useState<ApiResponse<CharacterDto | undefined>>({
