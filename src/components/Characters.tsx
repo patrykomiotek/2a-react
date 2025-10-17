@@ -11,14 +11,18 @@ interface CharacterDto {
 type ApiResponse = {
   isLoading: boolean;
   isError: boolean;
-  data: CharacterDto[];
+  data: {
+    results: CharacterDto[];
+  };
 };
 
 export const Characters = () => {
   const [state, setState] = useState<ApiResponse>({
     isLoading: true,
     isError: false,
-    data: [],
+    data: {
+      results: [],
+    },
   });
 
   // const [isLoading, setIsLoading] = useState(true);
@@ -48,7 +52,7 @@ export const Characters = () => {
         });
         setState({
           ...state,
-          data: data.results,
+          data: data,
           isLoading: false,
         });
       })
@@ -70,13 +74,14 @@ export const Characters = () => {
   }, []);
 
   const { isLoading, isError, data } = state;
+  const characters = data.results;
 
   return (
     <div>
       {isLoading && <p>Loading...</p>}
       {isError && <p>Oh no! An error has occurred! Please try again...</p>}
       <div className="space-y-4">
-        {data.map((elem) => (
+        {characters.map((elem) => (
           <div key={elem.id} className="flex gap-2">
             <img src={elem.image} className="rounded-full h-24" />
             <div>
