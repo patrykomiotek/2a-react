@@ -14,6 +14,16 @@ export const Menu = () => {
             Characters
           </Link>
         </li>
+        <li>
+          <Link to="/about" className="text-blue-600">
+            About
+          </Link>
+        </li>
+        <li>
+          <Link to="/contact" className="text-blue-600">
+            Contact
+          </Link>
+        </li>
       </ul>
     </nav>
   );
