@@ -1,11 +1,17 @@
 import { useForm, type SubmitHandler } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import { Button } from '../../../ui/Button';
 import { Input } from '../../../ui/Input';
-import type { CreateProductDto } from '../contracts/createProduct';
+import {
+  createProductSchema,
+  type CreateProductDto,
+} from '../contracts/createProduct';
 
 export const CreateProductForm = () => {
-  const { register, handleSubmit } = useForm<CreateProductDto>();
+  const { register, handleSubmit } = useForm<CreateProductDto>({
+    resolver: zodResolver(createProductSchema),
+  });
   // const [passwordError, setPasswordError] = useState(false);
 
   const handleCreateProduct: SubmitHandler<CreateProductDto> = (data) => {
