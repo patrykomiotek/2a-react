@@ -4,7 +4,7 @@ import { z } from 'zod';
 export const createProductSchema = z.object({
   name: z.string().min(3, { error: 'Product name is too short' }),
   description: z.string().min(3, { error: 'Product description is too short' }),
-  price: z.number().positive({ error: 'Price must be greater or equal 0' }),
+  price: z.number().min(0, { error: 'Price must be greater or equal 0' }),
 });
 
 // 2️⃣ Create type or interface
