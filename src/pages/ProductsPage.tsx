@@ -18,6 +18,8 @@ export const ProductsPage = () => {
   const [data, setData] = useState<ProductDto[]>([]);
 
   useEffect(() => {
+    console.log({ API_URL, API_TOKEN });
+
     fetch(`${API_URL}/products`, {
       headers: {
         Authorization: `Bearer ${API_TOKEN}`,
