@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 type MenuItem = {
   path: string;
@@ -7,20 +7,24 @@ type MenuItem = {
 
 const links: MenuItem[] = [
   {
-    path: "/",
-    label: "Home",
+    path: '/',
+    label: 'Home',
   },
   {
-    path: "/characters",
-    label: "Characters",
+    path: '/characters',
+    label: 'Characters',
   },
   {
-    path: "/about",
-    label: "About",
+    path: '/products',
+    label: 'Products',
   },
   {
-    path: "/contact",
-    label: "Contact",
+    path: '/about',
+    label: 'About',
+  },
+  {
+    path: '/contact',
+    label: 'Contact',
   },
 ];
 
