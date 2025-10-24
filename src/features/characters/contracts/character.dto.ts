@@ -2,6 +2,6 @@ export interface CharacterDto {
   id: number;
   image: string;
   name: string;
-  status: "Alive" | "Dead";
+  status: 'Alive' | 'Dead';
   species: string;
 }

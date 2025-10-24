@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom';
 
-import { CharacterDetails } from '../components/CharacterDetails';
 import { useApi } from '../hooks/useApi';
-import type { CharacterDto } from '../contracts/character.dto';
+import type { CharacterDto } from '../features/characters/contracts/character.dto';
+import { CharacterDetails } from '../features/characters/components/CharacterDetails';
 
 export const CharacterDetailsPage = () => {
   const { id } = useParams<{ id: string }>();

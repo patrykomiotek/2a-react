@@ -1,6 +1,6 @@
-import { Characters } from "../components/Characters";
-import type { CharacterDto } from "../contracts/character.dto";
-import { useApi } from "../hooks/useApi";
+import { Characters } from '../features/characters/components/Characters';
+import type { CharacterDto } from '../features/characters/contracts/character.dto';
+import { useApi } from '../hooks/useApi';
 
 type ApiResults = {
   results: CharacterDto[];
@@ -8,7 +8,7 @@ type ApiResults = {
 
 export const CharactersPage = () => {
   const { isLoading, isError, data } = useApi<ApiResults>(
-    "https://rickandmortyapi.com/api/character"
+    'https://rickandmortyapi.com/api/character',
   );
 
   if (isLoading) {

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import type { CharacterDto } from '../contracts/character.dto';
+import type { CharacterDto } from '../features/characters/contracts/character.dto';
 
 type Props = {
   characters: CharacterDto[];

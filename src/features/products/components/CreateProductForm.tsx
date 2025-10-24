@@ -1,7 +1,7 @@
 import { useForm, type SubmitHandler } from 'react-hook-form';
 
-import { Button } from '../ui/Button';
-import { Input } from '../ui/Input';
+import { Button } from '../../../ui/Button';
+import { Input } from '../../../ui/Input';
 
 interface CreateProductDto {
   name: string;
