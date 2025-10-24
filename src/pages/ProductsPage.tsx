@@ -1,34 +1,17 @@
 import { useEffect, useState } from 'react';
-
-interface ProductDto {
-  id: string;
-  createdTime: string;
-  fields: {
-    name: string;
-    description: string;
-    price: number;
-    created_at: string;
-  };
-}
-
-const API_URL = import.meta.env.VITE_API_URL;
-const API_TOKEN = import.meta.env.VITE_API_TOKEN;
+import type { ProductDto } from '../features/products/contracts/product.dto';
+import { fetchProducts } from '../features/products/services/products';
 
 export const ProductsPage = () => {
   const [data, setData] = useState<ProductDto[]>([]);
 
-  useEffect(() => {
-    console.log({ API_URL, API_TOKEN });
+  const loadData = async () => {
+    const products = await fetchProducts();
+    setData(products);
+  };
 
-    fetch(`${API_URL}/products`, {
-      headers: {
-        Authorization: `Bearer ${API_TOKEN}`,
-      },
-    })
-      .then((response) => response.json())
-      .then((responseData) => {
-        setData(responseData.records);
-      });
+  useEffect(() => {
+    loadData();
   }, []);
 
   return (
