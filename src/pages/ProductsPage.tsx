@@ -32,12 +32,15 @@ export const ProductsPage = () => {
   return (
     <div>
       <h1 className="text-3xl">Products list</h1>
-      {data.map((elem) => (
-        <div key={elem.id}>
-          <h2>{elem.fields.name}</h2>
-          <p>{elem.fields.description}</p>
-        </div>
-      ))}
+
+      <div className="space-y-4">
+        {data.map((elem) => (
+          <div key={elem.id}>
+            <h2 className="text-2xl">{elem.fields.name}</h2>
+            <p className="text-sm text-slate-600">{elem.fields.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
