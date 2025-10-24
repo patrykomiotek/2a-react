@@ -19,6 +19,10 @@ const links: MenuItem[] = [
     label: 'Products',
   },
   {
+    path: '/products/create',
+    label: 'Create Product',
+  },
+  {
     path: '/about',
     label: 'About',
   },
