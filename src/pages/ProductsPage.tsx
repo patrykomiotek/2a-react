@@ -1,18 +1,31 @@
-import { useEffect, useState } from 'react';
 import type { ProductDto } from '../features/products/contracts/product.dto';
 import { fetchProducts } from '../features/products/services/products';
+import { useApi } from '../hooks/useApi';
 
 export const ProductsPage = () => {
-  const [data, setData] = useState<ProductDto[]>([]);
+  const { isLoading, isError, data } = useApi<ProductDto[]>(fetchProducts);
+  // const [data, setData] = useState<ProductDto[]>([]);
 
-  const loadData = async () => {
-    const products = await fetchProducts();
-    setData(products);
-  };
+  // const loadData = async () => {
+  //   const products = await fetchProducts();
+  //   setData(products);
+  // };
 
-  useEffect(() => {
-    loadData();
-  }, []);
+  // useEffect(() => {
+  //   loadData();
+  // }, []);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  if (isError) {
+    return <p>Oh no! An error has occurred! Please try again...</p>;
+  }
+
+  if (!data) {
+    return <p>Data invalid</p>;
+  }
 
   return (
     <div>
