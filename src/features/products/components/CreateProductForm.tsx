@@ -1,5 +1,7 @@
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from '../../../ui/Button';
 import { Input } from '../../../ui/Input';
@@ -7,6 +9,7 @@ import {
   createProductSchema,
   type CreateProductDto,
 } from '../contracts/createProduct';
+import { createProduct } from '../services/products';
 
 export const CreateProductForm = () => {
   const {
@@ -16,10 +19,18 @@ export const CreateProductForm = () => {
   } = useForm<CreateProductDto>({
     resolver: zodResolver(createProductSchema),
   });
+  const navigate = useNavigate();
   // const [passwordError, setPasswordError] = useState(false);
 
-  const handleCreateProduct: SubmitHandler<CreateProductDto> = (data) => {
-    console.log(data);
+  const handleCreateProduct: SubmitHandler<CreateProductDto> = async (data) => {
+    // console.log(data);
+    try {
+      await createProduct(data);
+      toast.success('Success!');
+      navigate('/products');
+    } catch {
+      toast.error('Oh no! An error has occurred');
+    }
   };
 
   return (

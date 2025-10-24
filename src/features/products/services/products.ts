@@ -1,3 +1,4 @@
+import type { CreateProductDto } from '../contracts/createProduct';
 import type { ProductDto } from '../contracts/product.dto';
 
 const API_URL = import.meta.env.VITE_API_URL;
@@ -18,4 +19,17 @@ export const fetchProducts = async () => {
     console.error(error);
     return [];
   }
+};
+
+export const createProduct = async (data: CreateProductDto) => {
+  return fetch(`${API_URL}/products`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${API_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      records: [{ fields: data }],
+    }),
+  });
 };
