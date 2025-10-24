@@ -1,13 +1,19 @@
-import { useForm } from 'react-hook-form';
+import { useForm, type SubmitHandler } from 'react-hook-form';
 
 import { Button } from '../ui/Button';
 import { Input } from '../ui/Input';
 
+interface CreateProductDto {
+  name: string;
+  description: string;
+  price: number;
+}
+
 export const CreateProductForm = () => {
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit } = useForm<CreateProductDto>();
   // const [passwordError, setPasswordError] = useState(false);
 
-  const handleCreateProduct = (data) => {
+  const handleCreateProduct: SubmitHandler<CreateProductDto> = (data) => {
     console.log(data);
   };
 
@@ -19,9 +25,11 @@ export const CreateProductForm = () => {
         <Input {...register('description')} label="Description" />
         {/* <p className="text-red-500" ref={passwordErrorFieldRef}></p> */}
 
-        <Input {...register('price')} label="Price" />
+        <Input {...register('price', { valueAsNumber: true })} label="Price" />
       </div>
-      <Button type="submit" label="Send" />
+      <div>
+        <Button type="submit" label="Send" />
+      </div>
     </form>
   );
 };
