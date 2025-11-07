@@ -9,6 +9,7 @@ import { ProductsPage } from './pages/ProductsPage';
 import { CreateProductPage } from './pages/CreateProductPage';
 import { HotelsPage } from './pages/HotelsPage';
 import { HotelDetailsPage } from './pages/HotelDetailsPage';
+import { CustomerFormPage } from './pages/CustomerFormPage';
 
 export const router = createBrowserRouter([
   {
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
       {
         path: '/hotels/:id',
         element: <HotelDetailsPage />,
+      },
+      {
+        path: '/customer-form',
+        element: <CustomerFormPage />,
       },
     ],
   },
