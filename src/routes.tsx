@@ -7,6 +7,8 @@ import { ContactPage } from './pages/ContactPage';
 import { CharacterDetailsPage } from './pages/CharacterDetailsPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { CreateProductPage } from './pages/CreateProductPage';
+import { HotelsPage } from './pages/HotelsPage';
+import { HotelDetailsPage } from './pages/HotelDetailsPage';
 
 export const router = createBrowserRouter([
   {
@@ -40,6 +42,14 @@ export const router = createBrowserRouter([
       {
         path: '/products/create',
         element: <CreateProductPage />,
+      },
+      {
+        path: '/hotels',
+        element: <HotelsPage />,
+      },
+      {
+        path: '/hotels/:id',
+        element: <HotelDetailsPage />,
       },
     ],
   },

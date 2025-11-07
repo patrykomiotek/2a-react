@@ -23,12 +23,8 @@ const links: MenuItem[] = [
     label: 'Create Product',
   },
   {
-    path: '/about',
-    label: 'About',
-  },
-  {
-    path: '/contact',
-    label: 'Contact',
+    path: '/hotels',
+    label: 'Hotels',
   },
 ];
 
