@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import type { HotelDto } from '../contracts/hotel.dto';
 import { Button } from '../../../ui/Button';
 import { currencyFormatter } from '../../../shared/formatters/currencyFormatter';
@@ -8,10 +8,13 @@ type Props = {
 };
 
 export const HotelDetails = ({ hotel }: Props) => {
+  const naviagate = useNavigate();
+
   const handleReserve = (hotel: HotelDto) => {
     //
     sessionStorage.setItem('hotel', JSON.stringify(hotel));
     // sessionStorage.getItem('hotel'); // next screen
+    naviagate('/customer-form');
   };
 
   return (

@@ -3,6 +3,7 @@ import { Button } from '../../../ui/Button';
 import { Input } from '../../../ui/Input';
 import { customerSchema, type Customer } from '../contracts/customer.dto';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useNavigate } from 'react-router-dom';
 
 export const CustomerForm = () => {
   const {
@@ -12,10 +13,12 @@ export const CustomerForm = () => {
   } = useForm<Customer>({
     resolver: zodResolver(customerSchema),
   });
+  const navigate = useNavigate();
 
   const handleFormSubmit: SubmitHandler<Customer> = (data) => {
     console.log({ data });
     sessionStorage.setItem('customer', JSON.stringify(data));
+    navigate('/reservation-summary');
   };
 
   return (
