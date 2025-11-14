@@ -26,7 +26,7 @@ export const ReservationSummaryPage = () => {
   const renderHotel = () => {
     if (hotel) {
       return (
-        <div>
+        <div className="rounded-md border-2 border-slate-400 p-4 space-y-2">
           <h2 className="text-2xl">Hotel</h2>
           <h3 className="text-xl">{hotel.fields.name}</h3>
           <p>{currencyFormatter(hotel.fields.price)}</p>
@@ -39,7 +39,7 @@ export const ReservationSummaryPage = () => {
   const renderCustomer = () => {
     if (customer) {
       return (
-        <div>
+        <div className="rounded-md border-2 border-slate-400 p-4 space-y-2">
           <h2 className="text-2xl">Customer</h2>
           <p>
             {customer.firstName} {customer.lastName}
@@ -56,11 +56,13 @@ export const ReservationSummaryPage = () => {
   };
 
   const handleCancel = () => {
-    if (hotel && customer) {
-      sessionStorage.removeItem('hotel');
-      sessionStorage.removeItem('customer');
-      setIsCancelled(true);
-      toast.success('Reservation cancelled');
+    if (confirm('Are you sure?')) {
+      if (hotel && customer) {
+        sessionStorage.removeItem('hotel');
+        sessionStorage.removeItem('customer');
+        setIsCancelled(true);
+        toast.success('Reservation cancelled');
+      }
     }
   };
 
@@ -72,7 +74,11 @@ export const ReservationSummaryPage = () => {
       {renderCustomer()}
       {hotel && customer && (
         <div>
-          <Button label="Cancel reservation" onClick={handleCancel} />
+          <Button
+            label="Cancel reservation"
+            bgColor="carrot"
+            onClick={handleCancel}
+          />
         </div>
       )}
       {!hotel && !customer && (

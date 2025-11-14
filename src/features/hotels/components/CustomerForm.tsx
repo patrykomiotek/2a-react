@@ -23,7 +23,7 @@ export const CustomerForm = () => {
 
   return (
     <form onSubmit={handleSubmit(handleFormSubmit)}>
-      <div className="grid grid-cols-2">
+      <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
         <div>
           <Input
             label="First Name"
