@@ -20,8 +20,10 @@ export const HotelDetails = ({ hotel }: Props) => {
   return (
     <div className="space-y-2">
       <div>
-        <h2>{hotel.fields.name}</h2>
-        <p>{currencyFormatter(hotel.fields.price)}</p>
+        <h2 className="text-2xl">{hotel.fields.name}</h2>
+        <p className="text-slate-600">
+          {currencyFormatter(hotel.fields.price)}
+        </p>
       </div>
       <div>
         <Link to="/hotels" className="text-blue-500">

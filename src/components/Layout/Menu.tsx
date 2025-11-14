@@ -30,7 +30,7 @@ const links: MenuItem[] = [
 
 export const Menu = () => {
   return (
-    <nav className="mb-6">
+    <nav className="mx-auto max-w-md mb-6">
       <ul className="flex gap-2">
         {links.map((elem) => (
           <li key={elem.path}>

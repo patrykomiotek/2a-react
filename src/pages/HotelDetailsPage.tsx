@@ -22,7 +22,7 @@ export const HotelDetailsPage = () => {
 
   return (
     <div>
-      <h1 className="text-3xl">Hotel details</h1>
+      <h1 className="text-3xl mb-4">Hotel details</h1>
 
       <HotelDetails hotel={data} />
     </div>

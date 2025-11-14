@@ -19,8 +19,8 @@ export const HotelsPage = () => {
   }
 
   return (
-    <div>
-      <h1 className="text-3xl">Hotels list</h1>
+    <div className="mx-auto max-w-md">
+      <h1 className="text-3xl mb-4">Hotels list</h1>
 
       <HotelsList hotels={data} />
     </div>
