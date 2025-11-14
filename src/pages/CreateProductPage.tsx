@@ -2,11 +2,12 @@
 // const API_TOKEN = import.meta.env.VITE_API_TOKEN;
 
 import { CreateProductForm } from '../features/products/components/CreateProductForm';
+import { Header } from '../ui/Header';
 
 export const CreateProductPage = () => {
   return (
     <div>
-      <h1 className="text-3xl">Create product</h1>
+      <Header variant="h1">Create product</Header>
 
       <CreateProductForm />
     </div>

@@ -3,6 +3,7 @@ import type { HotelDto } from '../features/hotels/contracts/hotel.dto';
 import { fetchHotel } from '../features/hotels/services/hotels';
 import { useApi } from '../hooks/useApi';
 import { HotelDetails } from '../features/hotels/components/HotelDetails';
+import { Header } from '../ui/Header';
 
 export const HotelDetailsPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -22,7 +23,7 @@ export const HotelDetailsPage = () => {
 
   return (
     <div>
-      <h1 className="text-3xl mb-4">Hotel details</h1>
+      <Header variant="h1">Hotel details</Header>
 
       <HotelDetails hotel={data} />
     </div>

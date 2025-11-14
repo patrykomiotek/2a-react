@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import type { HotelDto } from '../contracts/hotel.dto';
 import { Button } from '../../../ui/Button';
 import { currencyFormatter } from '../../../shared/formatters/currencyFormatter';
+import { Header } from '../../../ui/Header';
 
 type Props = {
   hotel: HotelDto;
@@ -20,7 +21,7 @@ export const HotelDetails = ({ hotel }: Props) => {
   return (
     <div className="space-y-2">
       <div>
-        <h2 className="text-2xl">{hotel.fields.name}</h2>
+        <Header variant="h2">{hotel.fields.name}</Header>
         <p className="text-slate-600">
           {currencyFormatter(hotel.fields.price)}
         </p>

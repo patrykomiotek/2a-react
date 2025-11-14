@@ -1,5 +1,6 @@
 import { CustomerForm } from '../features/hotels/components/CustomerForm';
 import type { Customer } from '../features/hotels/contracts/customer.dto';
+import { Header } from '../ui/Header';
 
 export const CustomerFormPage = () => {
   const customer = JSON.parse(
@@ -8,7 +9,7 @@ export const CustomerFormPage = () => {
 
   return (
     <div className="space-y-4">
-      <h1 className="text-3xl">Customer Form</h1>
+      <Header variant="h1">Customer Form</Header>
       <CustomerForm defaultValues={customer} />
     </div>
   );

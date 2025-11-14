@@ -1,7 +1,9 @@
+import { Header } from '../ui/Header';
+
 export const HomePage = () => {
   return (
     <div>
-      <h1 className="text-3xl">Hello World!</h1>
+      <Header variant="h1">Hello World!</Header>
     </div>
   );
 };

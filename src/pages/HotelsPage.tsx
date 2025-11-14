@@ -2,6 +2,7 @@ import { HotelsList } from '../features/hotels/components/HotelsList';
 import type { HotelDto } from '../features/hotels/contracts/hotel.dto';
 import { fetchHotels } from '../features/hotels/services/hotels';
 import { useApi } from '../hooks/useApi';
+import { Header } from '../ui/Header';
 
 export const HotelsPage = () => {
   const { isLoading, isError, data } = useApi<HotelDto[]>(fetchHotels);
@@ -20,7 +21,7 @@ export const HotelsPage = () => {
 
   return (
     <div className="mx-auto max-w-md">
-      <h1 className="text-3xl mb-4">Hotels list</h1>
+      <Header variant="h1">Hotels list</Header>
 
       <HotelsList hotels={data} />
     </div>

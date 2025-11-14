@@ -6,6 +6,7 @@ import { currencyFormatter } from '../shared/formatters/currencyFormatter';
 import { Button } from '../ui/Button';
 import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { Header } from '../ui/Header';
 
 export const ReservationSummaryPage = () => {
   const [isCancelled, setIsCancelled] = useState(false);
@@ -27,8 +28,10 @@ export const ReservationSummaryPage = () => {
     if (hotel) {
       return (
         <div className="rounded-md border-2 border-slate-400 p-4 space-y-2">
-          <h2 className="text-2xl">Hotel</h2>
-          <h3 className="text-xl">{hotel.fields.name}</h3>
+          <Header variant="h2" className="text-2xl">
+            Hotel
+          </Header>
+          <Header variant="h3">{hotel.fields.name}</Header>
           <p>{currencyFormatter(hotel.fields.price)}</p>
         </div>
       );
@@ -40,7 +43,9 @@ export const ReservationSummaryPage = () => {
     if (customer) {
       return (
         <div className="rounded-md border-2 border-slate-400 p-4 space-y-2">
-          <h2 className="text-2xl">Customer</h2>
+          <Header variant="h2" className="text-2xl">
+            Customer
+          </Header>
           <p>
             {customer.firstName} {customer.lastName}
           </p>
@@ -68,8 +73,8 @@ export const ReservationSummaryPage = () => {
 
   return (
     <div className="space-y-2">
-      <h1 className="text-3xl">Summary</h1>
-      {isCancelled && <h2>Reservation cancelled</h2>}
+      <Header variant="h1">Summary</Header>
+      {isCancelled && <Header variant="h2">Reservation cancelled</Header>}
       {renderHotel()}
       {renderCustomer()}
       {hotel && customer && (

@@ -1,4 +1,5 @@
 // import { useEffect, useState } from "react";
+import { Header } from '../../../ui/Header';
 import type { CharacterDto } from '../contracts/character.dto';
 
 // interface CharacterDto {
@@ -82,7 +83,7 @@ export const CharacterDetails = ({ character }: Props) => {
         <div key={character.id} className="flex gap-2">
           <img src={character.image} className="rounded-full h-24" />
           <div>
-            <h2 className="text-2xl">{character.name}</h2>
+            <Header variant="h2">{character.name}</Header>
             <p className="text-slate-500">{character.status}</p>
             <p className="text-slate-500">{character.species}</p>
           </div>

@@ -1,7 +1,9 @@
+import { Header } from '../ui/Header';
+
 export const ContactPage = () => {
   return (
     <div>
-      <h1 className="text-3xl">Contact</h1>
+      <Header variant="h1">Contact</Header>
     </div>
   );
 };
