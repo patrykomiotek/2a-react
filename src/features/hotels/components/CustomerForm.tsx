@@ -5,13 +5,18 @@ import { customerSchema, type Customer } from '../contracts/customer.dto';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useNavigate } from 'react-router-dom';
 
-export const CustomerForm = () => {
+type Props = {
+  defaultValues?: Partial<Customer>;
+};
+
+export const CustomerForm = ({ defaultValues }: Props) => {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<Customer>({
     resolver: zodResolver(customerSchema),
+    defaultValues,
   });
   const navigate = useNavigate();
 
