@@ -1,8 +1,15 @@
+import { useState } from 'react';
+
 import type { Customer } from '../features/hotels/contracts/customer.dto';
 import type { HotelDto } from '../features/hotels/contracts/hotel.dto';
 import { currencyFormatter } from '../shared/formatters/currencyFormatter';
+import { Button } from '../ui/Button';
+import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 export const ReservationSummaryPage = () => {
+  const [isCancelled, setIsCancelled] = useState(false);
+
   const hotelItem = sessionStorage.getItem('hotel');
   let hotel: HotelDto | null = null;
   if (hotelItem) {
@@ -40,16 +47,43 @@ export const ReservationSummaryPage = () => {
           <p>
             {customer.email}, {customer.phone}
           </p>
+          <Link to="/customer-form" className="text-blue-600">
+            Edit
+          </Link>
         </div>
       );
+    }
+  };
+
+  const handleCancel = () => {
+    if (hotel && customer) {
+      sessionStorage.removeItem('hotel');
+      sessionStorage.removeItem('customer');
+      setIsCancelled(true);
+      toast.success('Reservation cancelled');
     }
   };
 
   return (
     <div className="space-y-2">
       <h1 className="text-3xl">Summary</h1>
+      {isCancelled && <h2>Reservation cancelled</h2>}
       {renderHotel()}
       {renderCustomer()}
+      {hotel && customer && (
+        <div>
+          <Button label="Cancel reservation" onClick={handleCancel} />
+        </div>
+      )}
+      {!hotel && !customer && (
+        <p>
+          Select{' '}
+          <Link to="/hotels" className="text-blue-600">
+            hotel
+          </Link>{' '}
+          and fill customer data
+        </p>
+      )}
     </div>
   );
 };
