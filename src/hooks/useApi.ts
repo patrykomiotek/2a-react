@@ -1,10 +1,30 @@
 import { useEffect, useState } from 'react';
 
-type ApiResponse<D> = {
-  isLoading: boolean;
-  isError: boolean;
-  data: D | undefined;
-};
+// type ApiResponse<D> = {
+//   isLoading: boolean;
+//   isError: boolean;
+//   data: D | undefined;
+// };
+
+type ApiResponse<D> =
+  | {
+      // pending
+      isLoading: true;
+      isError: false;
+      data: undefined;
+    }
+  | {
+      // fulfilled
+      isLoading: false;
+      isError: false;
+      data: D;
+    }
+  | {
+      // rejected
+      isLoading: false;
+      isError: true;
+      data: undefined;
+    };
 
 // const { isLoading, isError, data } = useApi<CharacterDto>('http://example.com');
 // eslint-disable-next-line @typescript-eslint/no-unsafe-function-type
@@ -24,7 +44,8 @@ export const useApi = <T>(fetcherOrUrl: string | Function) => {
             return response.json();
           } else {
             setState({
-              ...state,
+              isLoading: false,
+              data: undefined,
               isError: true,
             });
           }
@@ -38,7 +59,8 @@ export const useApi = <T>(fetcherOrUrl: string | Function) => {
         })
         .catch(() => {
           setState({
-            ...state,
+            isLoading: false,
+            data: undefined,
             isError: true,
           });
         });
@@ -52,7 +74,8 @@ export const useApi = <T>(fetcherOrUrl: string | Function) => {
         });
       } catch {
         setState({
-          ...state,
+          isLoading: false,
+          data: undefined,
           isError: true,
         });
       }

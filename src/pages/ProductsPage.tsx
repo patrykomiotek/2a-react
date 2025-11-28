@@ -1,10 +1,16 @@
-import type { ProductDto } from '../features/products/contracts/product.dto';
+import { useQuery } from '@tanstack/react-query';
+// import type { ProductDto } from '../features/products/contracts/product.dto';
 import { fetchProducts } from '../features/products/services/products';
-import { useApi } from '../hooks/useApi';
+// import { useApi } from '../hooks/useApi';
 import { Header } from '../ui/Header';
 
 export const ProductsPage = () => {
-  const { isLoading, isError, data } = useApi<ProductDto[]>(fetchProducts);
+  const { isLoading, isError, data } = useQuery({
+    queryKey: ['products'],
+    queryFn: fetchProducts,
+  });
+
+  // const { isLoading, isError, data } = useApi<ProductDto[]>(fetchProducts);
   // const [data, setData] = useState<ProductDto[]>([]);
 
   // const loadData = async () => {
